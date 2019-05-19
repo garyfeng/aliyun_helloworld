@@ -2,13 +2,15 @@
 Test case for Aliyun Functional Computing
 ----
 
-You must have an Aliyun primary account; sub-users won't do. 
+You must have an Aliyun primary account, i.e., a bunch of numbers. 
 
 ## Aliyun Account set up
 * Login to https://usercenter.console.aliyun.com/#/manage/ak using your primary account and password. 
   * I had to do a "real-name" account authentication to do anything. I did it with my AliPay mobile app, in which I have done person-id before. **You are giving your real, personal info to Ali ... as if they don't have it already**.
 
-* Create an AccessKey and the Secret, unless you decide to use an existing one. Note that you can't use any RAM subaccounts for the `FC` API, or else you run into error messages in the `fun deploy` stage.
+* Create an AccessKey and the Secret, unless you decide to use an existing one. 
+  * Note that you should use the AccessKeyId for a RAM subaccount, not the primary AccessKeys. **However, the only RAM role that worked for me is one with the admin right**. So far the one with full access to FC, API, OSS, NAS, etc. can deploy the `fc services` but `fun deploy` will fail (time-out) for deploying the functions to the API gateway.
+  
 * Set up Multi-Factor Authentication (MFA). I did it with the `Google Authenticator` app. As you go through the MFA steps, you will be shown a QR code at some point, which is to be scanned with the Google Authenticator app. Then your app will be ready to generate auth codes that are in sync with the MFA system. You will be prompted to use the app to input the 6-digit code for MFA.
 
 * Make sure you have openned the **Function Computing** feature: https://fc.console.aliyun.com/overview/cn-shanghai
